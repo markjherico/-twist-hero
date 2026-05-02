@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twist Evolved — Hero Section</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #050d1f;
+      --bg-grad:   #0b1836;
+      --blue:      #3b8ef3;
+      --blue-dark: #2673d4;
+      --white:     #ffffff;
+      --muted:     rgba(255,255,255,0.65);
+      --faint:     rgba(255,255,255,0.35);
+      --border:    rgba(255,255,255,0.10);
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 60px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+    }
+    .logo .line1 { color: var(--white); }
+    .logo .line2 { color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-nav {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 13px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 40px 60px 60px;
+    }
+
+    /* background radial glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 70% 50%, rgba(30, 80, 180, 0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 30% 40%, rgba(10, 30, 80, 0.5) 0%, transparent 60%),
+        linear-gradient(160deg, #050d1f 30%, #071328 70%, #050d1f 100%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 40px;
+    }
+
+    /* LEFT */
+    .hero-left {
+      flex: 0 0 48%;
+      max-width: 520px;
+    }
+
+    .hero-headline {
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .accent { color: var(--blue); }
+
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+
+    /* 4-column feature icons */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .feature-icon svg { width: 24px; height: 24px; }
+    .feature-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .feature-desc {
+      font-size: 11px;
+      color: var(--faint);
+      line-height: 1.4;
+    }
+
+    /* CTA row */
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .btn-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      padding: 16px 28px;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(59, 142, 243, 0.35);
+    }
+    .btn-cta:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 32px rgba(59, 142, 243, 0.45);
+    }
+
+    .cta-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .cta-badge .lock-icon {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cta-badge p { line-height: 1.4; font-size: 12.5px; }
+
+    /* RIGHT */
+    .hero-right {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 580px;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 60px rgba(30, 80, 200, 0.4));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    /* Circular badge */
+    .badge-circle {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(59, 142, 243, 0.45);
+      background: rgba(10, 25, 60, 0.75);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      gap: 2px;
+    }
+    .badge-circle p {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+    }
+    .badge-circle .badge-accent {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 24px 24px 48px; }
+      .hero-content { flex-direction: column; align-items: flex-start; }
+      .hero-left { flex: unset; max-width: 100%; }
+      .hero-right { width: 100%; min-height: 280px; }
+      .product-img { max-width: 340px; }
+      .features { grid-template-columns: repeat(2, 1fr); }
+      .badge-circle { bottom: 10px; right: 10px; width: 110px; height: 110px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 30px; }
+      .features { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .btn-cta { font-size: 12px; padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <span class="line1">TWIST</span>
+    <span class="line2">EVOLVED.</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">The Problem</a></li>
+    <li><a href="#">Our Solution</a></li>
+    <li><a href="#">Benefits</a></li>
+    <li><a href="#">FAQ</a></li>
+  </ul>
+  <button class="btn-nav">Get Early Access</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <h1 class="hero-headline">
+        A Better Way to Care<br>
+        for Your Scalp—<br>
+        <span class="accent">Every Day, Anywhere.</span>
+      </h1>
+      <p class="hero-sub">
+        Engineered for real results and built for effortless use,
+        so you can stay consistent without compromise.
+      </p>
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <!-- Shield icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="feature-title">Gentle Yet Effective</div>
+          <div class="feature-desc">Designed for daily comfort and care.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <!-- Droplet icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            </svg>
+          </div>
+          <div class="feature-title">Easy to Use</div>
+          <div class="feature-desc">Quick to clean. Always ready.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <!-- Shield check icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="feature-title">Durable Design</div>
+          <div class="feature-desc">Built to last through everyday use.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <!-- Flame/steam icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3c0 4-4 5-4 9a7 7 0 0 0 14 0c0-5-4-5-4-9"/>
+              <path d="M12 3c0 4 4 5 4 9"/>
+            </svg>
+          </div>
+          <div class="feature-title">Versatile for All</div>
+          <div class="feature-desc">Works with any routine, anytime, anywhere.</div>
+        </div>
+      </div>
+
+      <!-- CTA row -->
+      <div class="cta-row">
+        <button class="btn-cta">Get Early Access</button>
+        <div class="cta-badge">
+          <div class="lock-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <p>Be the first to know.<br>Limited spots available.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <img
+        src="product.png"
+        alt="Twist Evolved scalp care device"
+        class="product-img"
+      />
+      <div class="badge-circle">
+        <p>Thoughtfully<br>designed.<br>Purposefully<br>made.</p>
+        <p class="badge-accent">Better care,<br>simplified.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
